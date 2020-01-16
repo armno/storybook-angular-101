@@ -9,7 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "jest": "jest",
+    "jest:watch": "jest --watch"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +36,7 @@
     "@storybook/addon-actions": "^5.3.4",
     "@storybook/addon-links": "^5.3.4",
     "@storybook/addon-notes": "^5.3.4",
+    "@storybook/addon-storyshots": "^5.3.4",
     "@storybook/addons": "^5.3.4",
     "@storybook/angular": "^5.3.4",
     "@types/jasmine": "~3.3.8",
@@ -42,8 +45,11 @@
     "babel-loader": "^8.0.6",
     "codelyzer": "^5.0.0",
     "css-loader": "^3.4.2",
+    "identity-obj-proxy": "^3.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
+    "jest": "^24.9.0",
+    "jest-preset-angular": "^8.0.0",
     "karma": "~4.1.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
@@ -55,5 +61,24 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/jest-config/",
+      "/node_modules/"
+    ],
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/jest-config/setup.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/build/",
+      "/storybook-static/",
+      "src/test.ts"
+    ]
   }
 }

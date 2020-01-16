@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Task } from "./task";
 @Component({
   selector: "task-item",
   template: `
@@ -32,20 +33,20 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 export class TaskComponent implements OnInit {
   title: string;
 
-  @Input() task: any;
+  @Input() task: Task;
 
-  @Output() onPinTask: EventEmitter<any> = new EventEmitter();
-  @Output() onArchiveTask: EventEmitter<any> = new EventEmitter();
+  @Output() onPinTask: EventEmitter<string> = new EventEmitter();
+  @Output() onArchiveTask: EventEmitter<string> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit() {}
 
-  onPin(id) {
+  onPin(id: string) {
     this.onPinTask.emit(id);
   }
 
-  onArchive(id) {
+  onArchive(id: string) {
     this.onArchiveTask.emit(id);
   }
 }
