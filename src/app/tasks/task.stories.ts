@@ -1,11 +1,19 @@
+import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import { TaskComponent } from './task.component';
 import { Task } from './task';
+import { CommonModule } from '@angular/common';
 
 // main menu item in storybook navigation
 export default {
   title: 'Task',
   excludeStories: /.*Data$/,
+  decorators: [
+    moduleMetadata({
+      declarations: [TaskComponent],
+      imports: [CommonModule],
+    }),
+  ],
 };
 
 // actions: for @Output() i think
@@ -26,6 +34,11 @@ export const taskData: Task = {
 export const Default = () => {
   return {
     component: TaskComponent,
+    template: `
+    <div style="padding: 3rem">
+      <app-task [task]="task" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-task>
+    </div>
+    `,
     props: {
       task: taskData,
       onPinTask: actionsData.onPinTask,
@@ -36,6 +49,11 @@ export const Default = () => {
 
 export const Pinned = () => ({
   component: TaskComponent,
+  template: `
+    <div style="padding: 3rem">
+      <app-task [task]="task" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-task>
+    </div>
+    `,
   props: {
     task: {
       ...taskData,
@@ -48,6 +66,11 @@ export const Pinned = () => ({
 
 export const Archived = () => ({
   component: TaskComponent,
+  template: `
+    <div style="padding: 3rem">
+      <app-task [task]="task" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-task>
+    </div>
+    `,
   props: {
     task: {
       ...taskData,

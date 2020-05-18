@@ -42,7 +42,9 @@ export const Default = () => {
   return {
     component: TaskListComponent,
     template: `
+    <div style="padding: 3rem">
       <app-task-list [tasks]="tasks" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-task-list>
+    </div>
     `,
     props: {
       tasks: defaultTasksData,
@@ -57,7 +59,9 @@ export const WithPinnedTask = () => {
   return {
     component: TaskListComponent,
     template: `
+    <div style="padding: 3rem">
       <app-task-list [tasks]="tasks" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-task-list>
+    </div>
     `,
     props: {
       tasks: withPinnedTasksData,
